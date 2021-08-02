@@ -1,3 +1,4 @@
+require("dotenv").config();
 const { request } = require("express");
 let express = require("express");
 let app = express();
@@ -6,7 +7,7 @@ const sequelize = require("./db");
 let journal = require('./controllers/journalcontroller');
 let user = require("./controllers/usercontroller");
 
-sequelize.sync({force: true});
+sequelize.sync();
 
 app.use(express.json());
 
@@ -22,8 +23,9 @@ app.use(express.json());
 //Have endpoint of journal/practice
 //send a response from that endpoint (This is a practice route)
 
-app.use("/journal", journal);
 app.use("/user", user);
+app.use(require("./middleware/validate-session"));
+app.use("/journal", journal);
 
 
 app.listen(3000, function() {
