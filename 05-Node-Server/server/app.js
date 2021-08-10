@@ -26,7 +26,7 @@ app.use(express.json());
 //send a response from that endpoint (This is a practice route)
 
 app.use("/user", user);
-app.use(require("./middleware/validate-session"));
+//app.use(require("./middleware/validate-session"));
 app.use("/journal", journal);
 
 

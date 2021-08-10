@@ -6,7 +6,7 @@ const Journal = require('../db').import('../models/journal');
 
  router.get('/practice', validateSession, function(req, res) {
      res.send("Hey! This is a practice route!")
- });
+ }); 
 
 // router.get('/about', function (req, res) {
 //     res.send("This is the about route");
@@ -82,4 +82,4 @@ router.delete("/delete/:id", validateSession, function (req, res) {
     .then(() => res.status(200).json({ message: "Journal Entry Removed" }))
     .catch((err) => res.status(500).json({ error: err }));
 });
-module.exports = router;
+module.exports = router; 
